@@ -2,11 +2,6 @@ CountrYnside
 ============
 Projet agile
 
-CountrYnside
-============
-Projet agile
-
-
 
 telecharger git pour windows : https://windows.github.com/
 
