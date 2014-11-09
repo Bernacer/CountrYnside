@@ -12,7 +12,7 @@ ouvrir le git shell, se placer dans le dossier ( pour initier un projet ):
 git init // initialiser le projet pour generer le /.git
 git add --all // prendre en compte tout les fichier si non creer un fichier nomme ".gitignore" et mettre dedans les fichier.ext a ignorer 
 git remote add origin https://github.com/Bernacer/CountrYnside // ajouter son suivi au depot
-git commit -m "commentaire" // commit en local
+git commit -a -m "commentaire" // commit en local
 git pull origin master // recupere ( synchronize ) le projet avec le depot
 git push origin master// commit sur le depot
 
@@ -24,7 +24,7 @@ vous placer la ou vous voulez le copier :
 git clone https://github.com/Bernacer/CountrYnside
 
 - Pour commit :
-git commit -m "commentaire" // local
+git commit -a -m "commentaire" // local
 git pull // pour recuperer ce qui a ete changer et merge au cas ou il y'a eu modification du meme fichier
 git push pour envoyer au depot
 
