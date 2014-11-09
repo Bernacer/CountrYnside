@@ -1,0 +1,4 @@
+services:
+#    countrynside_site.example:
+#        class: Countrynside\SiteBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

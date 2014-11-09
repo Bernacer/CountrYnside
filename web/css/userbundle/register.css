@@ -1,0 +1,8 @@
+#erreurs{
+    color:red;
+    margin-top:50px;
+}
+
+#erreurs ul{
+    list-style: none;
+}

@@ -1,0 +1,8 @@
+countrynside_user:
+    resource: "@CountrynsideUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+countrynside_site:
+    resource: "@CountrynsideSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+

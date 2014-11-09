@@ -1,0 +1,38 @@
+{% extends '::base.html.twig'%}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+    {{parent()}}
+    <div class="container">
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <div class="row">
+            <div class="col-md-5">
+                <h3> Connexion </h3>
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <div class="row">
+                        <div class="form-group col-md-9">
+                            <label for="username">{{ 'security.login.username'|trans }}</label>
+                            <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-9">
+                            <label for="password">{{ 'security.login.password'|trans }}</label>
+                            <input class="form-control" type="password" id="password" name="_password" required="required" />
+                        </div>
+                    </div>
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                    <br/>
+                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                    <hr width=100% align=left style="border-top:2px solid #ecf0f1;">
+                    <p> Pas de compte?<a href="{{ path('fos_user_registration_register') }}"> Créez-en un </a> </p>
+                </form>
+            </div>
+        </div>
+</div>
+{% endblock body %}

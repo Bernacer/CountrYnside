@@ -1,0 +1,7 @@
+countrynside_site_homepage:
+    path: /
+    defaults: { _controller: CountrynsideSiteBundle:Default:index }
+    
+countrynside_site_connexion:
+    path: /connexion
+    defaults: { _controller: CountrynsideSiteBundle:Default:connexion }
