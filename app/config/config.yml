@@ -76,3 +76,11 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Countrynside\UserBundle\Entity\User
+    registration:
+        confirmation:
+            from_email:
+                address:        countrynside.adm@gmail.com
+                sender_name:    Administrateur
+            enabled: true
+    service:
+            mailer: fos_user.mailer.twig_swift

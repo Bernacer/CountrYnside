@@ -149,9 +149,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/enregistrement')) {
+        if (0 === strpos($pathinfo, '/inscription')) {
             // fos_user_registration_register
-            if (rtrim($pathinfo, '/') === '/enregistrement') {
+            if (rtrim($pathinfo, '/') === '/inscription') {
                 if (substr($pathinfo, -1) !== '/') {
                     return $this->redirect($pathinfo.'/', 'fos_user_registration_register');
                 }
@@ -159,9 +159,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::registerAction',  '_route' => 'fos_user_registration_register',);
             }
 
-            if (0 === strpos($pathinfo, '/enregistrement/c')) {
+            if (0 === strpos($pathinfo, '/inscription/c')) {
                 // fos_user_registration_check_email
-                if ($pathinfo === '/enregistrement/check-email') {
+                if ($pathinfo === '/inscription/check-email') {
                     if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'HEAD'));
                         goto not_fos_user_registration_check_email;
@@ -171,9 +171,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 }
                 not_fos_user_registration_check_email:
 
-                if (0 === strpos($pathinfo, '/enregistrement/confirm')) {
+                if (0 === strpos($pathinfo, '/inscription/confirm')) {
                     // fos_user_registration_confirm
-                    if (preg_match('#^/enregistrement/confirm/(?P<token>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (preg_match('#^/inscription/confirm/(?P<token>[^/]++)$#s', $pathinfo, $matches)) {
                         if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                             $allow = array_merge($allow, array('GET', 'HEAD'));
                             goto not_fos_user_registration_confirm;
@@ -184,7 +184,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     not_fos_user_registration_confirm:
 
                     // fos_user_registration_confirmed
-                    if ($pathinfo === '/enregistrement/confirmed') {
+                    if ($pathinfo === '/inscription/confirmed') {
                         if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                             $allow = array_merge($allow, array('GET', 'HEAD'));
                             goto not_fos_user_registration_confirmed;
