@@ -12,3 +12,20 @@ body{
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{
     color:black;
 }
+
+.content-info{
+    color: #edefed;
+    margin-top: 50px;
+    padding: 60px 0;
+    background-color: #363635;
+}
+
+.content-info .copyright {
+    float: right;
+    text-align: left;
+}
+
+.unstyled-list{
+    list-style: none;
+    padding: 0;
+}

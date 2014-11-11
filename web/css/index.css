@@ -54,20 +54,3 @@
     transition:all .5s cubic-bezier(.6,2,.4,1);
     cursor: pointer;
 }
-
-.content-info{
-    color: #edefed;
-    margin-top: 50px;
-    padding: 60px 0;
-    background-color: #363635;
-}
-
-.content-info .copyright {
-    float: right;
-    text-align: left;
-}
-
-.unstyled-list{
-    list-style: none;
-    padding: 0;
-}
