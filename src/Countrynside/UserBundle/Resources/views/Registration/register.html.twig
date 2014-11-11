@@ -11,6 +11,18 @@
                 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
                     <div class="row">
                         <div class="form-group col-md-9">
+                            {{ form_label(form.prenom) }}
+                            {{ form_widget(form.prenom,{'attr' : {'class':'form-control'}})}}
+                        </div>    
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-9">
+                            {{ form_label(form.nom) }}
+                            {{ form_widget(form.nom,{'attr' : {'class':'form-control'}})}}
+                        </div>    
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-9">
                             {{ form_label(form.username) }}
                             {{ form_widget(form.username,{'attr' : {'class':'form-control'}})}}
                         </div>    
