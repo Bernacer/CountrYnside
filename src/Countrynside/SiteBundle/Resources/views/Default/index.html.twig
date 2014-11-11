@@ -2,9 +2,11 @@
 {% block stylesheets %}
     {{parent()}}
 <link rel="stylesheet" href="{{ asset('css/index.css') }}" type="text/css" />
+<link rel="stylesheet" href="{{ asset('css/datepicker/css/datepicker.css') }}" type="text/css" />
 {% endblock %}
 {% block javascripts %}
 {{parent()}}
+<script src="{{ asset('css/datepicker/js/bootstrap-datepicker.js') }}"></script>
 <script type="text/javascript">
   $(document).ready(function(){
       $('.carousel').carousel({
@@ -12,6 +14,11 @@
       })
   });
  </script>
+    <script>
+        $(function(){
+            $('.datepicker').datepicker();
+        })
+    </script>
 {%endblock%}
 {%block body%}
     {{parent()}}
@@ -23,7 +30,7 @@
         </span>-->
         <div id="my_carousel" class="carousel slide" data-ride="carousel" style="z-index: 0">
             <div class="carousel-header col-xs-12">
-                <h3>Découvre la     France de l'intérieur</h3>
+                <h3>Découvre la France de l'intérieur</h3>
                 <p>
                     <i>Laisse nous te surprendre </i>
                 </p>
@@ -70,17 +77,17 @@
             </a>
             <div class="search-pannel">
                 <div class="row col-xs-12">
-                    <form class="form-inline" role="form">
+                    <form class="form-inline col-xs-12" role="form">
                         <div class="form-group">
                             <input type="text" class="form-control col-xs-3" id="adresse-search" placeholder="Que cherchez vous ?">
                         </div>
                         <div class="form-group">
-                                <input class="form-control col-xs-3" type="text" id="dateD" placeholder="Départ ?">
+                                <input class="form-control col-xs-3 datepicker" type="text" id="dateD" placeholder="Quand... ?">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control col-xs-3" id="dateF" placeholder="Arrivée ?">
+                            <input type="text" class="form-control col-xs-3 datepicker" id="dateF" placeholder="Jusqu'à... ?">
                         </div>
-                        <button type="submit" class="btn btn-default">Search</button>
+                        <button type="submit" class="btn btn-default">Chercher</button>
                     </form>
                 </div>
             </div>
@@ -91,51 +98,64 @@
             <div class="row text-center">
                 <h2>A découvrir...</h2>
                 <p>
-                    Découvrez de nouveaux lieux inspirants près de chez vous.
+                    Nos destinations les plus populaires.
                 </p>
             </div>
 
             <div class="row">
                     <div class="col-sm-4">
-                        <div class="img-small" style="background: url('{{asset('bundles/countrynside/images/image_fond6.jpg')}}');
-                                background-size: cover;">
+                        <div class="img-small" style="background: url('{{asset('bundles/countrynside/images/image_fond6.jpg')}}'); background-size: cover;">
+                           <p>Fromage artisanal</p>
                         </div>
-                        {#<img src="{{asset('bundles/countrynside/images/image_fond6.jpg')}}" width="100%" alt=""/>#}
                     </div>
                     <div class="col-sm-4">
-                        <div class="img-small" style="background: url('{{asset('bundles/countrynside/images/image_fond5.png')}}');
-                                background-size: cover;">
+                        <div class="img-small" style="background: url('{{asset('bundles/countrynside/images/image_fond5.png')}}');background-size: cover;">
+                            <p>Vignes de la région</p>
                         </div>
-                        {#<img src="{{asset('bundles/countrynside/images/image_fond5.png')}}" width="100%" alt=""/>#}
                     </div>
                     <div class="col-sm-4">
-                        <div class="img-small" style="background: url('{{asset('bundles/countrynside/images/image_fond4.png')}}');
-                                background-size: cover;">
+                        <div class="img-small" style="background: url('{{asset('bundles/countrynside/images/image_fond4.png')}}');background-size: cover;">
+                            <p>Cultures locales</p>
                         </div>
-                        {#<img src="{{asset('bundles/countrynside/images/image_fond4.png')}}" width="100%" alt=""/>#}
                     </div>
             </div>
         </div>
     </section>
 
-    <footer class="content-info" role="contentinfo">
-        <div class="container text-center">
+    <div class="content-info">
+        <div class="container ">
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-3 col-sm-offset-3">
                     <h3>Société</h3>
-                    <p>parag 1</p>
+                    <ul class="unstyled-list">
+                        <li><a href="">À propos</a></li>
+                        <li><a href="">Presse</a></li>
+                        <li><a href="">Blog</a></li>
+                        <li><a href="">Aide</a></li>
+                        <li><a href="">Règles</a></li>
+                        <li><a href="">Conditions générales et confidentialité</a></li>
+                    </ul>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <h3>Découvrir</h3>
-                    <p>parag 2</p>
+                    <ul class="unstyled-list">
+                        <li><a href="">Confiance et sécurité</a></li>
+                        <li><a href="">Inviter des amis</a></li>
+                        <li><a href="">La sélection CountrYnside</a></li>
+                        <li><a href="">Voyage d'affaires</a></li>
+                        <li><a href="">Plan du site</a></li>
+                    </ul>
                 </div>
-                <div class="col-sm-4">
-                    <h3>Titre3</h3>
-                    <p>parag 3</p>
+                <div class="col-sm-3">
+                    <h3>Devenir partenaire</h3>
+                    <ul class="unstyled-list">
+                        <li><a href="">Avantages</a></li>
+                        <li><a href="">Nous contacter</a></li>
+                    </ul>
                 </div>
             </div>
             <hr/>
             <p class="copyright"><a href="">Privacy</a> - © 2014-2015 Miage Paris-Ouest</p>
         </div>
-    </footer>
+    </div>
 {%  endblock %}

@@ -27,13 +27,31 @@
     background-position: center;
     background-repeat: no-repeat;
     height: 400px;
+    position: relative;
 }
+
+.img-small p{
+    color:#edefed;
+    margin: 0;
+    padding: 0;
+    font-size: xx-large;
+    position: absolute;
+    top:40%;
+    width: 100%;
+    text-align: center;
+}
+
 .img-small:hover{
     filter: brightness(75%);
     -webkit-filter: brightness(75%);
     -moz-filter: brightness(75%);
     -o-filter: brightness(75%);
     -ms-filter: brightness(75%);
+    -webkit-transition:all .5s cubic-bezier(.6,2,.4,1);
+    -moz-transition:all .5s cubic-bezier(.6,2,.4,1);
+    -ms-transition:all .5s cubic-bezier(.6,2,.4,1);
+    -o-transition:all .5s cubic-bezier(.6,2,.4,1);
+    transition:all .5s cubic-bezier(.6,2,.4,1);
     cursor: pointer;
 }
 
@@ -47,4 +65,9 @@
 .content-info .copyright {
     float: right;
     text-align: left;
+}
+
+.unstyled-list{
+    list-style: none;
+    padding: 0;
 }
