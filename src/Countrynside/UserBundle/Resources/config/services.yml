@@ -1,4 +1,5 @@
 services:
-#    countrynside_user.example:
-#        class: Countrynside\UserBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    countrynside_user.registration.form.type:
+         class: Countrynside\UserBundle\Form\Type\RegistrationFormType
+         tags:
+             - { name: form.type, alias: countrynside_user_registration }

@@ -6,14 +6,15 @@
 {% endblock %}
 {% block javascripts %}
 {{parent()}}
-<script src="{{ asset('css/datepicker/js/bootstrap-datepicker.js') }}"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-      $('.carousel').carousel({
-        interval : 5000
-      })
-  });
- </script>
+    <script src="{{ asset('css/datepicker/js/bootstrap-datepicker.js') }}"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          $('.carousel').carousel({
+            interval : 5000
+          })
+      });
+    </script>
+
     <script>
         $(function(){
             $('.datepicker').datepicker();
@@ -23,11 +24,6 @@
 {%block body%}
     {{parent()}}
     <div class="text-center">
-        {#<h3>Découvre la France de l'intérieur</h3>
-        <p> <i>Laisse nous te surprendre </i></p>#}
-        <!--<span id="fond">
-            <img src="{{asset('bundles/countrynside/images/image_fond4.png')}}" />
-        </span>-->
         <div id="my_carousel" class="carousel slide" data-ride="carousel" style="z-index: 0">
             <div class="carousel-header col-xs-12">
                 <h3>Découvre la France de l'intérieur</h3>

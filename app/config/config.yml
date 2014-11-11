@@ -77,6 +77,8 @@ fos_user:
     firewall_name: main
     user_class: Countrynside\UserBundle\Entity\User
     registration:
+        form:
+            type: countrynside_user_registration
         confirmation:
             from_email:
                 address:        countrynside.adm@gmail.com

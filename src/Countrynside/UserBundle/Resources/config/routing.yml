@@ -4,3 +4,7 @@ fos_user_security:
 fos_user_register:
     resource: "routing/registration.xml"
     prefix: /inscription
+
+fos_user_profil:
+    resource: "routing/profile.xml"
+    prefix: /profile
