@@ -1,0 +1,34 @@
+fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 10px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+}
+.headtitle{
+    margin: 10px;
+    margin-bottom: 20px;
+}
+.headform{
+    margin: 10px;
+    margin-bottom: 20px;
+    margin-left: 20%; 
+}
+
+.image{
+    height:auto;
+    width:auto;
+    max-width:800px;
+    max-height:300px;
+}
+
+#map-canvas {
+    margin-left: -55%;
+    width:450px;
+    height:300px;
+    border-radius: 10px;
+    border: #000 thick solid;
+}

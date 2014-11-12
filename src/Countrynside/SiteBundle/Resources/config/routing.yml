@@ -5,3 +5,11 @@ countrynside_site_homepage:
 countrynside_site_connexion:
     path: /connexion
     defaults: { _controller: CountrynsideSiteBundle:Default:connexion }
+    
+countrynside_site_annonce:
+    path: /user/annonce
+    defaults: { _controller: CountrynsideSiteBundle:Default:annonce }
+    
+countrynside_site_voir:
+    path: /user/voir
+    defaults: { _controller: CountrynsideSiteBundle:Default:voir }
