@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/Symfony/app/Resources/views/base.html.twig</file>
-            <file>file:/C:/wamp/www/Symfony/src/Countrynside/SiteBundle/Resources/views/Default/index.html.twig</file>
-            <file>file:/C:/wamp/www/Symfony/web/css/index.css</file>
+            <file>file:/C:/wamp/www/Countrynside/src/Countrynside/UserBundle/Entity/User.php</file>
+            <file>file:/C:/wamp/www/Countrynside/src/Countrynside/UserBundle/Entity/UserRepository.php</file>
+            <file>file:/C:/wamp/www/Countrynside/src/Countrynside/SiteBundle/Entity/Event.php</file>
+            <file>file:/C:/wamp/www/Countrynside/src/Countrynside/SiteBundle/Entity/EventRepository.php</file>
+            <file>file:/C:/wamp/www/Countrynside/src/Countrynside/SiteBundle/Resources/views/Default/voir.html.twig</file>
+            <file>file:/C:/wamp/www/Countrynside/src/Countrynside/SiteBundle/Resources/views/Default/annonce.html.twig</file>
+            <file>file:/C:/wamp/www/Countrynside/web/css/sitebundle/js/eventmap.js</file>
+            <file>file:/C:/wamp/www/Countrynside/src/Countrynside/SiteBundle/Form/Type/EventType.php</file>
+            <file>file:/C:/wamp/www/Countrynside/src/Countrynside/SiteBundle/Controller/DefaultController.php</file>
         </group>
     </open-files>
 </project-private>

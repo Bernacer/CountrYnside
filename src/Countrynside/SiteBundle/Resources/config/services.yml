@@ -1,4 +1,5 @@
 services:
-#    countrynside_site.example:
-#        class: Countrynside\SiteBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    countrynside_site.form.type.event:
+        class: Countrynside\SiteBundle\Form\Type\EventType
+        tags:
+            - { name: form.type, alias: event }

@@ -1,0 +1,79 @@
+{% extends '::base.html.twig'%}
+{% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="{{ asset('css/sitebundle/css/eventform.css') }}" type="text/css" />
+{% endblock %}
+{% block javascripts %}
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+    <script type="text/javascript" src="{{ asset('css/sitebundle/js/eventform.js') }}"></script>
+{% endblock %}
+
+{%block prebody%}
+    {{parent()}}
+    <body onload="initialize()">
+        <div class="container">
+            <div class="text-center">
+                <div class="col-md-12">
+                    <fieldset class>
+                        <h3 class="headtitle">Publiez votre évènement</h3>
+                        {{ form_start(form) }}
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                {{ form_row(form.titre,{'attr' : {'class':'form-control', 'placeholder' : 'Entrez le titre de votre annonce'}}) }}
+                            </div>    
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                {{ form_row(form.type,{'attr' : {'class':'form-control'}}) }}
+                            </div>    
+                        </div>
+                        <div class="row">
+
+                        </div>
+                        <div class="row">
+                            <div id="locationField" class="form-group col-md-12">
+                                {{ form_row(form.adresse,{'attr' : {'id' : 'autocomplete','class':'form-control', 'placeholder' : 'Entrez votre addresse',
+             'onFocus' : 'geolocate()'}}) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                {{ form_row(form.region,{'attr' : {'class':'form-control', 'placeholder' : 'Veuillez saisir votre addresse',}}) }}
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                {{ form_row(form.telephone,{'attr' : {'class':'form-control', 'placeholder' : 'Entrez votre numéro de téléphone'}}) }}
+                            </div>        
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-9">
+                                {{ form_row(form.file,{'attr' : {'class':'form-control'}}) }}
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="button" class="btn btn-default" onclick="visualiser" value="Visualiser"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                {{ form_row(form.capacite,{'attr' : {'class':'form-control'}}) }}
+                            </div>    
+                            <div class="form-group col-md-6">
+                                {{ form_row(form.tarif,{'attr' : {'class':'form-control'}}) }}
+                            </div>    
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                {{ form_row(form.descriptif,{'attr' : {'class':'form-control'}}) }}
+                            </div>    
+                        </div>
+                        <input type="submit" class="btn btn-success"/>
+                        {{ form_errors(form) }}
+                        {{ form_end(form) }}
+                    </fieldset>
+                </div>    
+            </div>
+        </div>
+    </div>
+</body>
+{%endblock%}    
