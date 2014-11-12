@@ -7,6 +7,9 @@
     bottom:100px;
 }
 
+.carousel{
+    margin-top: -40px;
+}
 .carousel-header{
     position: absolute;
     z-index: 1;
