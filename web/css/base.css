@@ -13,14 +13,14 @@ body{
     color:black;
 }
 
-.content-info{
+.footer{
     color: #edefed;
     margin-top: 50px;
     padding: 60px 0;
     background-color: #363635;
 }
 
-.content-info .copyright {
+.footer .copyright {
     float: right;
     text-align: left;
 }

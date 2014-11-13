@@ -25,11 +25,15 @@
     padding: 30px;
 }
 
+.input-search{
+    margin-right: 5px;
+}
+
 .img-small{
     margin: 5px;
     background-position: center;
     background-repeat: no-repeat;
-    height: 400px;
+    height: 300px;
     position: relative;
 }
 

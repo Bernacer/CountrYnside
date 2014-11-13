@@ -10,6 +10,6 @@ countrynside_site_annonce:
     path: /user/annonce
     defaults: { _controller: CountrynsideSiteBundle:Default:annonce }
     
-countrynside_site_voir:
-    path: /user/voir
-    defaults: { _controller: CountrynsideSiteBundle:Default:voir }
+countrynside_site_mes_annonces:
+    path: /user/mes_annonces
+    defaults: { _controller: CountrynsideSiteBundle:Default:mesAnnonces }

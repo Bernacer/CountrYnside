@@ -34,14 +34,14 @@ class DefaultController extends Controller {
             $event->upload($user->getId());
             $em->persist($event);
             $em->flush();
-            return $this->redirect($this->generateUrl('countrynside_site_voir'));
+            return $this->redirect($this->generateUrl('countrynside_site_mes_annonces'));
         }
         return $this->render('CountrynsideSiteBundle:Default:annonce.html.twig', array(
                     'form' => $form->createView(),
         ));
     }
 
-    public function voirAction() {
+    public function mesAnnoncesAction() {
         $id = $this->getUser()->getId();
         $user = $this->getDoctrine()
                 ->getRepository('CountrynsideUserBundle:User')

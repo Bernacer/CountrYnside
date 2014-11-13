@@ -14,7 +14,6 @@
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-	{% block prebody %}
     <body>
         {% block body %}
             {% block navbar %}
@@ -46,6 +45,7 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{app.user.username}} <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="{{path("fos_user_profile_show")}}">Profil</a></li>
+                                        <li><a href="{{path("countrynside_site_mes_annonces")}}">Mes annonces</a></li>
                                         <li><a href="{{path('fos_user_security_logout')}}">Déconnexion</a></li>
                                     </ul>
                                 </li>
@@ -58,11 +58,9 @@
             </div>
             {% endblock %}
         {% endblock %}
-        {% endblock %}
     </body>
 
-<footer>
-        <div class="content-info">
+<footer class="footer" id="footer">
             <div class="container ">
                 <div class="row">
                     <div class="col-sm-3 col-sm-offset-3">
@@ -97,6 +95,5 @@
                 <hr/>
                 <p class="copyright"><a href="">Privacy</a> - © 2014-2015 Miage Paris-Ouest</p>
             </div>
-        </div>
 </footer>
 </html>
