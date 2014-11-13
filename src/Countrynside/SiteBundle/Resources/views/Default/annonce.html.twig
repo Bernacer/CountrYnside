@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{ asset('css/sitebundle/css/eventform.css') }}" type="text/css" />
 {% endblock %}
 {% block javascripts %}
+    {{ parent() }}
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
     <script type="text/javascript" src="{{ asset('css/sitebundle/js/eventform.js') }}"></script>

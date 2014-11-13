@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{ asset('css/sitebundle/css/eventform.css') }}" type="text/css" />
 {% endblock %}
 {% block javascripts %}
+    {{ parent() }}
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script type="text/javascript" src="{{ asset('css/sitebundle/js/eventmap.js') }}"></script>
 {% endblock %}
