@@ -8,6 +8,7 @@ fieldset {
     width: 80%;
     margin: 0 10%;
 }
+
 .headtitle{
     margin: 10px;
     margin-bottom: 20px;
@@ -15,20 +16,32 @@ fieldset {
 .headform{
     margin: 10px;
     margin-bottom: 20px;
-    margin-left: 20%; 
+    /*margin-left: 20%; */
 }
 
 .image{
     height:auto;
-    width:auto;
-    max-width:800px;
-    max-height:300px;
+    width:100%;
+}
+
+.map{
+    position: fixed;
+    top: 60px;
+    left: -15px;
+    bottom: 10px;
+    width: 40%;
 }
 
 #map-canvas {
-    margin-left: -55%;
-    width:450px;
-    height:300px;
-    border-radius: 10px;
-    border: #000 thick solid;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    -webkit-transform: translateZ(0px);
+    /*margin-left: -55%;*/
+    /*width:100%;*/
+    /*height:500px;*/
+    /*border-radius: 10px;*/
+    /*position: fixed;*/
+    /*border: #000 1px solid;*/
 }
