@@ -73,15 +73,15 @@
             </a>
             <div class="search-pannel">
                 <div class="row col-xs-12">
-                    <form class="form-inline col-xs-12" role="form">
+                    <form class="form-inline col-xs-12" role="form" method="GET" action="{{path("countrynside_site_chercherEvent")}}">
                         <div class="form-group">
-                            <input type="text" class="form-control input-search col-xs-3" id="adresse-search" placeholder="Que cherchez vous ?">
+                            <input type="text" class="form-control input-search col-xs-3" name="infos_recherche" placeholder="Que cherchez vous ?">
                         </div>
                         <div class="form-group">
-                                <input class="form-control input-search col-xs-3 datepicker" type="text" id="dateD" placeholder="Quand... ?">
+                                <input class="form-control input-search col-xs-3 datepicker" type="text" name="dateD" placeholder="Quand... ?">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control input-search col-xs-3 datepicker" id="dateF" placeholder="Jusqu'à... ?">
+                            <input type="text" class="form-control input-search col-xs-3 datepicker" name="dateF" placeholder="Jusqu'à... ?">
                         </div>
                         <button type="submit" class="btn btn-default">Chercher</button>
                     </form>

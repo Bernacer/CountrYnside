@@ -52,4 +52,18 @@ class DefaultController extends Controller {
         return $this->render('CountrynsideSiteBundle:Default:voir.html.twig', array('events' => $events, 'id' => $id));
     }
 
+    public function chercherEventAction(Request $request) {
+        if ($request->getMethod() == "GET") {
+            $recherche = $request->get("infos_recherche");
+            $dateD = $request->get("dateD");
+            $dateF = $request->get("dateF");
+            $mots = explode(" ", $recherche);
+            $events = $this->getDoctrine()
+                        ->getManager()
+                        ->getRepository('CountrynsideSiteBundle:Event')
+                        ->findByMots($mots);
+        }
+        return $this->render('CountrynsideSiteBundle:Default:rechercherEvennement.html.twig',array('events' => $events));
+    }
+
 }

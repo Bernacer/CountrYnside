@@ -1,0 +1,59 @@
+{% extends '::base.html.twig'%}
+{% block body %}
+    {{parent()}}
+    <div class="container">
+        <div class="search-pannel">
+                <div class="row col-xs-12">
+                    <form class="form-inline col-xs-12" role="form" method="GET" action="{{path("countrynside_site_chercherEvent")}}">
+                        <div class="form-group">
+                            <input type="text" class="form-control input-search col-xs-3" name="infos_recherche" placeholder="Que cherchez vous ?">
+                        </div>
+                        <div class="form-group">
+                                <input class="form-control input-search col-xs-3 datepicker" type="text" name="dateD" placeholder="Quand... ?">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-search col-xs-3 datepicker" name="dateF" placeholder="Jusqu'à... ?">
+                        </div>
+                        <button type="submit" class="btn btn-default">Chercher</button>
+                    </form>
+                </div>
+            </div>
+        {% if events is empty %}
+            <p style="margin-top: 75px"> Aucun évennement trouvé </p>
+        {% else %}
+            {% for event in events %}
+                <div>
+                    <h3>{{event.titre}}</h3>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <time>{{event.datepub|date('d M Y')}}</time>
+                            </div>
+                        </div>
+                        <div class="row"> 
+                            <div class="col-md-6">
+                                <h6>{{event.region}}</h6>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>{{event.adresse}}</h6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p>{{event.telephone}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p>{{event.capacite}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p>{{event.tarif}}</p>
+                            </div>
+                        </div>     
+                        <div class="col-md-12">     
+                            <article>{{event.descriptif}}</article>
+                        </div>
+                    <input type="button" value="Voir l'emplacement sur la carte" onclick="reinitialize('{{event.coord}}')">
+               </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock body %}
