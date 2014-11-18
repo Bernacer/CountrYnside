@@ -1,6 +1,6 @@
 <?php
 
-namespace Countrynside\SiteBundle\Entity;
+namespace Countrynside\SiteBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class EventRepository extends EntityRepository {
     
+    public function findByMots($mots){
+        $queryBuilder = $this->createQueryBuilder('e');
+        $i=0;
+        foreach($mots as $mot){
+            $queryBuilder ->andWhere('e.titre LIKE :titre'.$i.'')
+                    ->setParameter('titre'.$i.'', '%'.$mot.'%');
+            $i=$i+1;
+        }
+        return $queryBuilder->getQuery()->getResult();
+                
+    }
 }

@@ -13,3 +13,7 @@ countrynside_site_annonce:
 countrynside_site_mes_annonces:
     path: /user/mes_annonces
     defaults: { _controller: CountrynsideSiteBundle:Default:mesAnnonces }
+    
+countrynside_site_chercherEvent:
+    path: /rechercher_evennement
+    defaults: { _controller: CountrynsideSiteBundle:Default:chercherEvent }
