@@ -3,6 +3,10 @@ body{
     background-color: #edefed;
 }
 
+.main {
+    min-height: 800px;
+}
+
 .navbar-default{
 	/*background-color:#009974;*/
 	/*background-color:#2c3e50;*/

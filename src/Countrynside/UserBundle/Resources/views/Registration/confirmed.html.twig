@@ -4,7 +4,7 @@
 
 {% block body %}
     {{parent()}}
-    <div class="container">
+    <div class="main container">
         <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
         {% if app.session is not empty %}
             {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
