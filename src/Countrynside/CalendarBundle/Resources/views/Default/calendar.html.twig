@@ -1,0 +1,216 @@
+<script>
+
+    var gap = 0;
+            var month = {{ month }};
+            var year = {{ year }};
+            var item = {{ item }};{% if user %}
+            var clickMethod = 0;
+    {% endif %}
+
+
+        jQuery(document).ready(function () {
+
+            var cal1 = $('#cal1');
+            var cal2 = $('#cal2');
+            var cal3 = $('#cal3');
+            var $select = $('#items_select');
+
+        {% if user %}
+                var $selectMethod = $('#states_select');
+        {% endif %}
+
+                $('#link_next').attr('onclick', '').click(function (e) {
+                    e.preventDefault();
+                    changeMonths(1)
+                });
+                $('#link_prev').attr('onclick', '').click(function (e) {
+                    e.preventDefault();
+                    changeMonths(-1)
+                });
+
+                function fillCalendar(mois, annee, cal)
+                {
+                    cal.css('display', 'none');
+                    cal.find('a').removeClass().unbind();
+        {% if user == false %}
+                    cal.find('a').click(function (e) {
+                        e.preventDefault();
+                    });
+        {% endif %}
+
+                    var url = "{{ path('countrynside_calendar_ajax') }}";
+                    var id = cal.attr('id');
+                    $.post(url, {
+                        month: mois,
+                        year: annee,
+                        itemId: item
+                    }, function (data) {
+                        //the response is in the data variable
+                        if (data.responseCode == 200)
+                        {
+                            var days_previous_month = data.days_previous_month;
+                            var nb_days_prev = data.nb_days_prev;
+                            $('#' + id + '_title').html(data.current_month);
+                            var count = 1;
+                            while (count < 43)
+                            {
+        {% if user %}
+                                if (data.calendar[(count - 1)].dates != "")
+                                {
+                                    $('#' + id + '_cell_' + count).attr("title", data.calendar[(count - 1)].dates).click(changeState);
+                                }
+                                else
+                                {
+                                    $('#' + id + '_cell_' + count).click(function (e) {
+                                        e.preventDefault();
+                                    });
+                                }
+        {% endif %}
+                                if (data.calendar[(count - 1)].booked == -1)
+                                    $('#' + id + '_cell_' + count).html(days_previous_month - nb_days_prev + count);
+                                else
+                                    $('#' + id + '_cell_' + count).html(data.calendar[(count - 1)].fill);
+                                if (data.calendar[(count - 1)].booked == 1)
+                                    $('#' + id + '_cell_' + count).addClass(data.calendar[(count - 1)].classe);
+                                else if (data.calendar[(count - 1)].booked < 0)
+                                    $('#' + id + '_cell_' + count).addClass("dates_preview");
+                                count++;
+                            }
+                            cal.css('display', 'block');
+                        }
+                        else if (data.responseCode == 400)
+                        {
+                            alert(data.message);
+                        }
+                        else
+                        {
+                            alert("An unexpeded error occured.");
+                        }
+                    });
+                    return false;
+                }
+
+                function changeMonths(step)
+                {
+                    gap = gap + step;
+                    var newMonth = month + (3 * gap) % 12;
+                    var gapYear = (3 * gap) / 12;
+                    var newYear = year + gapYear - gapYear % 1;
+                    if (newMonth <= 0)
+                    {
+                        newMonth += 12;
+                    }
+                    fillCalendar(newMonth - 12 * Math.floor((newMonth) / 13), newYear + Math.floor((newMonth) / 13), cal1);
+                    fillCalendar(newMonth + 1 - 12 * Math.floor((newMonth + 1) / 13), newYear + Math.floor((newMonth + 1) / 13), cal2);
+                    fillCalendar(newMonth + 2 - 12 * Math.floor((newMonth + 2) / 13), newYear + Math.floor((newMonth + 2) / 13), cal3);
+                }
+
+                $select.change(function () {
+                    $select.find("option:selected").each(function () {
+                        item = $(this).val();
+                        changeMonths(0);
+                    });
+                })
+
+        {% if user %}
+                $selectMethod.change(function () {
+                    $selectMethod.find("option:selected").each(function () {
+                        clickMethod = $(this).val();
+                    });
+                })
+
+                function changeState(e)
+                {
+                    e.preventDefault();
+                    var date = $(this).attr("title");
+                    var id = $(this).attr("id");
+                    var url = "{{ path('countrynside_calendar_ajax_admin') }}";
+                    $.post(url, {
+                        date: date,
+                        id: id,
+                        itemId: item,
+                        clickMethod: clickMethod
+                    }, function (data) {
+                        if (data.responseCode == 200) {
+                            var id_returned = data.id_returned;
+                            var date_returned = data.date_returned;
+                            var state = data.state;
+                            $('#' + id_returned).removeClass();
+                            $('#' + id_returned).addClass(state);
+                        }
+                        else if (data.responseCode == 400) {
+                            alert(data.message);
+                        }
+                        else {
+                            alert("An unexpeded error occured.");
+                        }
+                    });
+                }
+        {% endif %}
+
+                $(window).load(function () {
+                    changeMonths(0);
+                });
+
+
+            });
+    </script>
+
+    {% if user %}
+        <h1>Mes disponibilités</h1>
+        <h2>{{name}}</h2>
+        <div id="symfocal_admin" class="shadow_effect">
+        {% else %}
+            <h1>Calendrier des disponibilités</h1>
+            <h2>{{name}}</h2>
+            <div id="symfocal" class="shadow_effect">
+            {% endif %}
+
+            {% if user %}
+                <div id="manager">
+                    <div id="selects">
+                        <!--<select id="items_select">
+                        {% for item in items %}
+                            <option value="{{ item.id }}">{{ item.name }}</option>
+                        {% endfor %}
+                    </select>-->
+
+
+                        <select id="states_select">
+                            {% for state in states %}
+                                <option value="{{ state.id }}">{{ state.name }}</option>
+                            {% endfor %}
+                        </select>
+
+                    </div>
+                </div>
+            {% endif %}
+
+            <div id="control_nav">
+                <a id="link_prev" href="#">Prev</a>
+                <a id="link_next" href="#">Next</a>
+            </div>
+
+            <div id="calendars_container">
+                {% include 'CountrynsideCalendarBundle:Default:cal.html.twig' with {'calId': 'cal1'} %}
+                {% include 'CountrynsideCalendarBundle:Default:cal.html.twig' with {'calId': 'cal2'} %}
+                {% include 'CountrynsideCalendarBundle:Default:cal.html.twig' with {'calId': 'cal3'} %}
+            </div>
+
+            <div id="legend" class="calendar">
+                <table  align="center">
+                    <tr>
+                        <td class="title_calendar" colspan="2" width="100%">
+                            <span>Légende</span>
+                        </td>
+                    </tr>
+                    {% for state in states %}
+                        <tr>
+                            <td><a href="#" class="{{ state.class }}"></a></td>
+                            <td class="legend_calendar">{{ state.name }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+        </div>

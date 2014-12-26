@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}CountrYnside{% endblock %}</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('css/base.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('css/calendarstyle.css') }}" type="text/css" />
+        {% endblock %}
+        {% block javascripts %}
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+            <script type="text/javascript" src="{{ asset('css/bootstrap/js/bootstrap.js') }}"></script>
+        {%endblock%}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}
+            {% block navbar %}
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="{{path('countrynside_site_homepage')}}"
+                           style="width:80px; background: url('{{asset('bundles/countrynside/images/cy-vrac.png')}}');
+                                   background-repeat: no-repeat;background-position: center;background-size: contain; margin-left:5px; margin-top:-3px;">
+                        </a>
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{path('countrynside_site_homepage')}}">Accueil</a></li>
+                            <li><a href="">Nos offres</a></li>
+                            <li><a href="">Trouver un séjour</a></li>
+                            <li><a href="">Devenir partenaire</a></li>
+                            <li><a href="{{path('countrynside_site_annonce')}}">Publier son évènement</a></li>
+                            <li><a href="">Contact</a></li>
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{app.user.username}} <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="{{path("fos_user_profile_show")}}">Profil</a></li>
+                                        <li><a href="{{path("countrynside_site_mes_annonces")}}">Mes annonces</a></li>
+                                        <li><a href="{{path('fos_user_security_logout')}}">Déconnexion</a></li>
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <li> <a href="{{ path('fos_user_security_login') }}">Connectez-vous</a> </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+        {% endblock %}
+    </body>
+
+<footer class="footer" id="footer">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-sm-3 col-sm-offset-3">
+                        <h3>Société</h3>
+                        <ul class="unstyled-list">
+                            <li><a href="">À propos</a></li>
+                            <li><a href="">Presse</a></li>
+                            <li><a href="">Blog</a></li>
+                            <li><a href="">Aide</a></li>
+                            <li><a href="">Règles</a></li>
+                            <li><a href="">Conditions générales et confidentialité</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <h3>Découvrir</h3>
+                        <ul class="unstyled-list">
+                            <li><a href="">Confiance et sécurité</a></li>
+                            <li><a href="">Inviter des amis</a></li>
+                            <li><a href="">La sélection CountrYnside</a></li>
+                            <li><a href="">Voyage d'affaires</a></li>
+                            <li><a href="">Plan du site</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <h3>Devenir partenaire</h3>
+                        <ul class="unstyled-list">
+                            <li><a href="">Avantages</a></li>
+                            <li><a href="">Nous contacter</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr/>
+                <p class="copyright"><a href="">Privacy</a> - © 2014-2015 Miage Paris-Ouest</p>
+            </div>
+</footer>
+</html>
