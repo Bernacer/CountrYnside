@@ -12,8 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Countrynside\CalendarBundle\Entity\StateRepository")
  */
-class State
-{
+class State {
 
     /**
      * @var integer $id
@@ -30,20 +29,19 @@ class State
      */
     private $bookings;
 
-    public function __construct()
-    {
+    public function __construct($name, $class, $position) {
         $this->bookings = new ArrayCollection();
+        $this->name = $name;
+        $this->class = $class;
+        $this->position = $position;
     }
 
-    public function getBookings()
-    {
+    public function getBookings() {
         return $this->bookings;
     }
 
-    public function setBookings(\Doctrine\Common\Collections\Collection $bookings)
-    {
-        foreach ($bookings as $booking)
-        {
+    public function setBookings(\Doctrine\Common\Collections\Collection $bookings) {
+        foreach ($bookings as $booking) {
             $booking->setState($this);
         }
 
@@ -76,8 +74,7 @@ class State
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -87,8 +84,7 @@ class State
      * @param string $name
      * @return state
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -99,8 +95,7 @@ class State
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -110,8 +105,7 @@ class State
      * @param string $class
      * @return state
      */
-    public function setClass($class)
-    {
+    public function setClass($class) {
         $this->class = $class;
 
         return $this;
@@ -122,8 +116,7 @@ class State
      *
      * @return string 
      */
-    public function getClass()
-    {
+    public function getClass() {
         return $this->class;
     }
 
@@ -133,8 +126,7 @@ class State
      * @param integer $position
      * @return state
      */
-    public function setPosition($position)
-    {
+    public function setPosition($position) {
         $this->position = $position;
 
         return $this;
@@ -145,8 +137,7 @@ class State
      *
      * @return integer 
      */
-    public function getPosition()
-    {
+    public function getPosition() {
         return $this->position;
     }
 

@@ -1,8 +1,10 @@
-{% extends "::layout.html.twig" %}
-
-{% block body %}
-
-{% block CountrynsideCalendar_body %}
+{% extends "::base.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/calendarstyle.css') }}" type="text/css" />
 {% endblock %}
-
+{% block body %}
+    {{ parent() }}
+    {% block CountrynsideCalendar_body %}
+    {% endblock %}
 {% endblock %}

@@ -20,7 +20,7 @@
     width: 960px;
     bottom:-15px;
     left:0;
-    content: url('../images/separator.png');
+    //content: url('../images/separator.png');
 }
 
 .shadow_effect {
