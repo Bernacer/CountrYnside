@@ -1,0 +1,7 @@
+parameters:
+#    countrynside_calendar.example.class: Countrynside\CalendarBundle\Example
+
+services:
+#    countrynside_calendar.example:
+#        class: %countrynside_calendar.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

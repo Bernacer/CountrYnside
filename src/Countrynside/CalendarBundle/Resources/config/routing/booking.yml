@@ -1,0 +1,30 @@
+booking:
+    pattern:  /
+    defaults: { _controller: "CountrynsideCalendarBundle:Booking:index" }
+
+booking_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CountrynsideCalendarBundle:Booking:show" }
+
+booking_new:
+    pattern:  /new
+    defaults: { _controller: "CountrynsideCalendarBundle:Booking:new" }
+
+booking_create:
+    pattern:  /create
+    defaults: { _controller: "CountrynsideCalendarBundle:Booking:create" }
+    requirements: { _method: post }
+
+booking_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CountrynsideCalendarBundle:Booking:edit" }
+
+booking_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CountrynsideCalendarBundle:Booking:update" }
+    requirements: { _method: post }
+
+booking_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CountrynsideCalendarBundle:Booking:delete" }
+    requirements: { _method: post }

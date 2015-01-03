@@ -4,35 +4,46 @@ namespace Countrynside\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Countrynside\SiteBundle\Entity\Event;
+use Countrynside\CalendarBundle\Entity\Item;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller {
+class DefaultController extends Controller
+{
 
-    public function indexAction() {
+    public function indexAction()
+    {
         return $this->render('CountrynsideSiteBundle:Default:index.html.twig');
     }
 
-    public function connexionAction() {
+    public function connexionAction()
+    {
         return $this->render('CountrynsideSiteBundle:Default:connexion.html.twig');
     }
 
-    public function annonceAction(Request $request) {
+    public function annonceAction(Request $request)
+    {
 
         $user = $this->getUser();
         $event = new Event();
+        $item = new Item();
         $event->setDatePub(new \DateTime());
         $event->setUser($user);
 
         $form = $this->createForm('event', $event);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isValid())
+        {
             $this->get('session')->getFlashBag()->add(
                     'valid', 'Votre annonce a bien été sauvegardée'
             );
             $em = $this->getDoctrine()->getManager();
             $event->upload($user->getId());
             $em->persist($event);
+            $item->setIdEvent($event);
+            $item->setName($event->getTitre());
+            $item->setPosition(0);
+            $em->persist($item);
             $em->flush();
             return $this->redirect($this->generateUrl('countrynside_site_mes_annonces'));
         }
@@ -41,7 +52,8 @@ class DefaultController extends Controller {
         ));
     }
 
-    public function mesAnnoncesAction() {
+    public function mesAnnoncesAction()
+    {
         $id = $this->getUser()->getId();
         $user = $this->getDoctrine()
                 ->getRepository('CountrynsideUserBundle:User')
@@ -52,18 +64,20 @@ class DefaultController extends Controller {
         return $this->render('CountrynsideSiteBundle:Default:voir.html.twig', array('events' => $events, 'id' => $id));
     }
 
-    public function chercherEventAction(Request $request) {
-        if ($request->getMethod() == "GET") {
+    public function chercherEventAction(Request $request)
+    {
+        if ($request->getMethod() == "GET")
+        {
             $recherche = $request->get("infos_recherche");
             $dateD = $request->get("dateD");
             $dateF = $request->get("dateF");
             $mots = explode(" ", $recherche);
             $events = $this->getDoctrine()
-                        ->getManager()
-                        ->getRepository('CountrynsideSiteBundle:Event')
-                        ->findByMots($mots);
+                    ->getManager()
+                    ->getRepository('CountrynsideSiteBundle:Event')
+                    ->findByMots($mots);
         }
-        return $this->render('CountrynsideSiteBundle:Default:rechercherEvennement.html.twig',array('events' => $events));
+        return $this->render('CountrynsideSiteBundle:Default:rechercherEvennement.html.twig', array('events' => $events));
     }
 
 }

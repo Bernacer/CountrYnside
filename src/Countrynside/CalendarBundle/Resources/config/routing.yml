@@ -1,0 +1,27 @@
+countrynside_calendar_homepage:
+    pattern:  /calendar/{event}
+    defaults: { _controller: CountrynsideCalendarBundle:Default:index }
+    requirements:
+        event:  \d+
+
+countrynside_calendar_ajax:
+    pattern:  /ajax_calendar
+    defaults: { _controller: CountrynsideCalendarBundle:Default:calendar }
+
+countrynside_calendar_admin:
+    pattern:  /user/calendar/{event}
+    defaults: { _controller: CountrynsideCalendarBundle:Default:indexAdmin }
+    requirements:
+        event:  \d+
+
+countrynside_calendar_ajax_admin:
+    pattern:  /ajax_admin
+    defaults: { _controller: CountrynsideCalendarBundle:Default:ajaxAdmin }
+
+CountrynsideCalendarBundle_state:
+    resource: "@CountrynsideCalendarBundle/Resources/config/routing/state.yml"
+    prefix:   /user/calendar/state
+    
+CountrynsideCalendarBundle_item:
+    resource: "@CountrynsideCalendarBundle/Resources/config/routing/item.yml"
+    prefix:   /user/calendar/item

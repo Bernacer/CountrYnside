@@ -1,0 +1,30 @@
+state:
+    pattern:  /
+    defaults: { _controller: "CountrynsideCalendarBundle:State:index" }
+
+state_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CountrynsideCalendarBundle:State:show" }
+
+state_new:
+    pattern:  /new
+    defaults: { _controller: "CountrynsideCalendarBundle:State:new" }
+
+state_create:
+    pattern:  /create
+    defaults: { _controller: "CountrynsideCalendarBundle:State:create" }
+    requirements: { _method: post }
+
+state_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CountrynsideCalendarBundle:State:edit" }
+
+state_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CountrynsideCalendarBundle:State:update" }
+    requirements: { _method: post }
+
+state_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CountrynsideCalendarBundle:State:delete" }
+    requirements: { _method: post }

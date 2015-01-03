@@ -57,11 +57,14 @@
                         <div class="col-md-12">
                             <article>{{event.descriptif}}</article>
                         </div>
-                        <input type="button" value="Voir l'emplacement sur la carte" onclick="reinitialize('{{event.coord}}')">
-                    </fieldset>
-                    <br>
-                    <br>
-                {% endfor%}
+                            <input type="button" value="Voir l'emplacement sur la carte" onclick="reinitialize('{{event.coord}}')">
+                            <br/>
+                            <a href="{{ path('countrynside_calendar_admin', { 'event': event.id })}}">Gérer les disponibilités</a>
+                        </fieldset>
+                        <br>
+                        <br>
+                    {% endfor%}
+                </div>
             </div>
         </div>
     </div>

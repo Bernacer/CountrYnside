@@ -1,0 +1,7 @@
+{% extends "CountrynsideCalendarBundle::layout.html.twig" %}
+
+{% block body %}
+    {{ parent()}}
+    {{ render(controller('CountrynsideCalendarBundle:Default:calendarDisplay', { 'user': true,'event': event, 'name':name})) }}
+
+{% endblock %}
