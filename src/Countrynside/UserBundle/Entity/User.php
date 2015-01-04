@@ -33,6 +33,12 @@ class User extends BaseUser {
     protected $nom;
 
     /**
+     *
+     * @ORM\Column(name="premium",type="boolean")
+     */
+    protected $premium = false;
+    
+    /**
      * @ORM\OneToMany(targetEntity="\Countrynside\SiteBundle\Entity\Event", mappedBy="user")
      */
     protected $events;
@@ -91,6 +97,27 @@ class User extends BaseUser {
      */
     public function getNom() {
         return $this->nom;
+    }
+    
+    /**
+     * Set premium
+     *
+     * @param boolean $type
+     * @return User
+     */
+    public function setPremium($type) {
+        $this->premium = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get premium
+     *
+     * @return boolean
+     */
+    public function getPremium() {
+        return $this->premium;
     }
 
     /**

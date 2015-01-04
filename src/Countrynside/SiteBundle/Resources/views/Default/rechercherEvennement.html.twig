@@ -33,26 +33,9 @@
                             <div class="col-md-6">
                                 <h6>{{event.region}}</h6>
                             </div>
-                            <div class="col-md-6">
-                                <h6>{{event.adresse}}</h6>
-                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <p>{{event.telephone}}</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p>{{event.capacite}}</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p>{{event.tarif}}</p>
-                            </div>
-                        </div>     
-                        <div class="col-md-12">     
-                            <article>{{event.descriptif}}</article>
-                        </div>
-                    <input type="button" value="Voir l'emplacement sur la carte" onclick="reinitialize('{{event.coord}}')">
-               </div>
+                    <p> <a href="{{path('countrynside_site_infosEventComplet', {'event' : event.id} )}}"> En savoir plus </a> </p>
+                </div>
             {% endfor %}
         {% endif %}
     </div>

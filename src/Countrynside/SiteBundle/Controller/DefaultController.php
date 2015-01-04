@@ -79,5 +79,19 @@ class DefaultController extends Controller
         }
         return $this->render('CountrynsideSiteBundle:Default:rechercherEvennement.html.twig', array('events' => $events));
     }
+    
+    public function infosEventCompletAction(Request $request)
+    {
+        $user = $this->getUser();
+        if($user->getPremium()){
+            $id_event=$request->get('event');
+            $event = $this->getDoctrine()
+                ->getRepository('CountrynsideSiteBundle:Event')
+                ->find($id_event);
+        return $this->render('CountrynsideSiteBundle:Default:infosEvennementComplet.html.twig', array('event' => $event));
+        }
+        return $this->render('CountrynsideSiteBundle:Default:devenirPremium.html.twig');
+        
+    }
 
 }

@@ -17,3 +17,7 @@ countrynside_site_mes_annonces:
 countrynside_site_chercherEvent:
     path: /rechercher_evennement
     defaults: { _controller: CountrynsideSiteBundle:Default:chercherEvent }
+    
+countrynside_site_infosEventComplet:
+    path: /information_evennement
+    defaults: { _controller: CountrynsideSiteBundle:Default:infosEventComplet }
