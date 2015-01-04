@@ -19,7 +19,8 @@
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "@dev",
-        "doctrine/doctrine-fixtures-bundle": "2.2.x-dev"
+        "doctrine/doctrine-fixtures-bundle": "2.2.x-dev",
+        "knplabs/knp-paginator-bundle": "~2.4"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

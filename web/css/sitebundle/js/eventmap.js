@@ -1,10 +1,10 @@
 var map;
 function initialize() {
     var mapOptions = {
-        zoom: 8,
+        zoom: 6,
         disableDefaultUI: true,
         scrollwheel: false,
-        center: new google.maps.LatLng(-34.397, 150.644)
+        center: new google.maps.LatLng(46.6302142, 2.5680160)
     };
     map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
@@ -15,7 +15,7 @@ function reinitialize(Coord) {
     var coord = res.split(", ")
     var pos = new google.maps.LatLng(coord[0], coord[1]);
     var mapOptions = {
-        zoom: 18,
+        zoom: 8,
         disableDefaultUI: true,
         scrollwheel: true,
         center: new google.maps.LatLng(coord[0], coord[1])
