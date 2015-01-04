@@ -2,11 +2,14 @@
 
 namespace Countrynside\UserBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Countrynside\UserBundle\Entity\User;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
-class LoadUserData implements FixtureInterface, \Symfony\Component\DependencyInjection\ContainerAwareInterface {
+class LoadUserData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface,OrderedFixtureInterface {
 
     private $container;
     
@@ -22,12 +25,19 @@ class LoadUserData implements FixtureInterface, \Symfony\Component\DependencyInj
         $user->setEnabled(true);
         $user->setRoles(array("ROLE_ADMIN"));
         $userManager->updateUser($user,true);
+
         $manager->persist($user);
+
         $manager->flush();
+
+        $this->addReference('fifi',$user);
     }
 
     public function setContainer(\Symfony\Component\DependencyInjection\ContainerInterface $container = null) {
         $this->container = $container;
     }
 
+    public function getOrder(){
+        return 1;
+    }
 }
