@@ -95,7 +95,6 @@ class DefaultController extends Controller {
         if ($user->isPremium()){
             $time = new \DateTime("now");
             if($time > $user->getDateExpiration()){
-                throw new \Exception("test");
                 $user->setPremium(false);
                 $user->setDateExpiration(null);
                 $em = $this->getDoctrine()->getManager();

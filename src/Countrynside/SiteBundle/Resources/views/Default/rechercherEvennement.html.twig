@@ -4,11 +4,18 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="{{ asset('css/sitebundle/css/eventform.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('css/sitebundle/css/font-awesome-4.1.0/css/font-awesome.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('css/datepicker/css/datepicker.css') }}" type="text/css" />
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
     <script src="http://maps.google.com/maps/api/js?v=3.exp"></script>
     <script type="text/javascript" src="{{ asset('css/sitebundle/js/eventmap.js') }}"></script>
+    <script src="{{ asset('css/datepicker/js/bootstrap-datepicker.js') }}"></script>
+     <script>
+        $(function(){
+            $('.datepicker').datepicker();
+        })
+    </script>
 {% endblock %}
 {% block body %}
     {{parent()}}
@@ -39,9 +46,9 @@
                         <div id="card">
                             <div class="col-md-4 col-sm-6 card-item" >
                                 {% if not user.isPremium %}
-                                <a href="{{path('countrynside_site_abonnement', {'event' : event.id} )}} " class="card-link" ></a>
+                                <a href="{{path('countrynside_site_abonnement', {'event' : event.id} )}} " class="card-link" />
                                 {% else %}
-                                 <a href="#cardModal{{ event.id }}" class="card-link" data-toggle="modal">
+                                <a href="#cardModal{{ event.id }}" class="card-link" data-toggle="modal"/>
                                 {%endif%}
                                     <div class="card-hover">
                                         <div class="card-hover-content">
@@ -53,7 +60,6 @@
                                     {% else %}
                                         <img src="{{asset('bundles/countrynside/images/photo_default.png')}}" class="image-card img-responsive"/>
                                     {% endif %}
-                                </a>
                                 <div class="card-caption">
                                     <h4 class="card-title">{{event.titre}}</h4><br/>
                                     <p class="text-muted">{{event.descriptif}}</p>
@@ -107,14 +113,8 @@
                                                     {{event.telephone}}
                                                 </div>
                                                 <div class="text-left">
-                                                    <i class="glyphicon glyphicon-inbox"></i><span class="modal-label"> Capacité :</span>
-                                                    {% if event.capacite == 1 %}
+                                                    <i class="glyphicon glyphicon-inbox"></i><span class="modal-label"> Capacité :</span>                               
                                                         {{event.capacite}} personne
-                                                    {% elseif event.capacite > 1 and event.capacite < 10 %}
-                                                        {{event.capacite}} personnes
-                                                    {% else %}
-                                                        + {{event.capacite}} personnes
-                                                    {% endif %}
                                                 </div>
                                                 <div class="text-left">
                                                     <i class="glyphicon glyphicon-euro"></i><span class="modal-label"> Tarif :</span>

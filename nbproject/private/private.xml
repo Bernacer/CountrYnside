@@ -3,16 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/CountrYnside/app/AppKernel.php</file>
-            <file>file:/C:/wamp/www/CountrYnside/composer.json</file>
-            <file>file:/C:/wamp/www/CountrYnside/src/Countrynside/SiteBundle/Resources/views/Default/rechercherEvennement.html.twig</file>
-            <file>file:/C:/wamp/www/CountrYnside/app/config/config.yml</file>
-            <file>file:/C:/wamp/www/CountrYnside/src/Countrynside/SiteBundle/Controller/DefaultController.php</file>
-            <file>file:/C:/wamp/www/CountrYnside/src/Countrynside/SiteBundle/Resources/views/Default/infosEvennementComplet.html.twig</file>
-            <file>file:/C:/wamp/www/CountrYnside/web/css/sitebundle/js/eventmap.js</file>
-            <file>file:/C:/wamp/www/CountrYnside/app/autoload.php</file>
-            <file>file:/C:/wamp/www/CountrYnside/src/Countrynside/SiteBundle/Resources/views/Default/annonce.html.twig</file>
-            <file>file:/C:/wamp/www/CountrYnside/src/Countrynside/SiteBundle/Repository/EventRepository.php</file>
+            <file>file:/C:/wamp/www/Symfony/src/Countrynside/SiteBundle/Controller/DefaultController.php</file>
+            <file>file:/C:/wamp/www/Symfony/src/Countrynside/PaymentBundle/Controller/PaymentController.php</file>
+            <file>file:/C:/wamp/www/Symfony/src/Countrynside/UserBundle/Entity/User.php</file>
         </group>
     </open-files>
 </project-private>
