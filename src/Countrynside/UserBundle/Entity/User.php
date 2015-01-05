@@ -37,15 +37,28 @@ class User extends BaseUser {
      * @ORM\Column(name="premium",type="boolean")
      */
     protected $premium = false;
-    
+        
+    /**
+     *
+     * @var type \DateTime
+     * @ORM\Column(name="date_expiration",type="date",nullable=true)
+     */
+    protected $dateExpiration;
     /**
      * @ORM\OneToMany(targetEntity="\Countrynside\SiteBundle\Entity\Event", mappedBy="user")
      */
     protected $events;
-
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Countrynside\PaymentBundle\Entity\Order",mappedBy="user")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    protected $orders;
+    
     public function __construct() {
         parent::__construct();
         $this->events = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     /**
@@ -116,10 +129,10 @@ class User extends BaseUser {
      *
      * @return boolean
      */
-    public function getPremium() {
+    public function isPremium() {
         return $this->premium;
     }
-
+    
     /**
      * Add events
      *
@@ -151,5 +164,13 @@ class User extends BaseUser {
     public function getEvents()
     {
         return $this->events;
+    }
+    
+    public function getDateExpiration(){
+        return $this->dateExpiration;
+    }
+    
+    public function setDateExpiration($date){
+        $this->dateExpiration = $date;
     }
 }

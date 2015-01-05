@@ -1,0 +1,69 @@
+<?php
+
+use Symfony\Component\Routing\RequestContext;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
+use Psr\Log\LoggerInterface;
+
+/**
+ * appProdUrlGenerator
+ *
+ * This class has been auto-generated
+ * by the Symfony Routing Component.
+ */
+class appProdUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerator
+{
+    private static $declaredRoutes = array(
+        'fos_user_security_login' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/login',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'fos_user_security_check' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::checkAction',  ),  2 =>   array (    '_method' => 'POST',  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/login_check',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'fos_user_security_logout' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::logoutAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/logout',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'fos_user_registration_register' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::registerAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/inscription/',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'fos_user_registration_check_email' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::checkEmailAction',  ),  2 =>   array (    '_method' => 'GET',  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/inscription/check-email',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'fos_user_registration_confirm' => array (  0 =>   array (    0 => 'token',  ),  1 =>   array (    '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmAction',  ),  2 =>   array (    '_method' => 'GET',  ),  3 =>   array (    0 =>     array (      0 => 'variable',      1 => '/',      2 => '[^/]++',      3 => 'token',    ),    1 =>     array (      0 => 'text',      1 => '/inscription/confirm',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'fos_user_registration_confirmed' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'FOS\\UserBundle\\Controller\\RegistrationController::confirmedAction',  ),  2 =>   array (    '_method' => 'GET',  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/inscription/confirmed',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'fos_user_profile_show' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'FOS\\UserBundle\\Controller\\ProfileController::showAction',  ),  2 =>   array (    '_method' => 'GET',  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/profile/',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'fos_user_profile_edit' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'FOS\\UserBundle\\Controller\\ProfileController::editAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/profile/edit',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'countrynside_site_homepage' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Countrynside\\SiteBundle\\Controller\\DefaultController::indexAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'countrynside_site_connexion' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Countrynside\\SiteBundle\\Controller\\DefaultController::connexionAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/connexion',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'countrynside_site_annonce' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Countrynside\\SiteBundle\\Controller\\DefaultController::annonceAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/user/annonce',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'countrynside_site_mes_annonces' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Countrynside\\SiteBundle\\Controller\\DefaultController::mesAnnoncesAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/user/mes_annonces',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'countrynside_site_chercherEvent' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Countrynside\\SiteBundle\\Controller\\DefaultController::chercherEventAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/rechercher_evennement',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'countrynside_calendar_homepage' => array (  0 =>   array (    0 => 'event',  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\DefaultController::indexAction',  ),  2 =>   array (    'event' => '\\d+',  ),  3 =>   array (    0 =>     array (      0 => 'variable',      1 => '/',      2 => '\\d+',      3 => 'event',    ),    1 =>     array (      0 => 'text',      1 => '/calendar',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'countrynside_calendar_ajax' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\DefaultController::calendarAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/ajax_calendar',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'countrynside_calendar_admin' => array (  0 =>   array (    0 => 'event',  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\DefaultController::indexAdminAction',  ),  2 =>   array (    'event' => '\\d+',  ),  3 =>   array (    0 =>     array (      0 => 'variable',      1 => '/',      2 => '\\d+',      3 => 'event',    ),    1 =>     array (      0 => 'text',      1 => '/user/calendar',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'countrynside_calendar_ajax_admin' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\DefaultController::ajaxAdminAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/ajax_admin',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'state' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\StateController::indexAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/user/calendar/state/',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'state_show' => array (  0 =>   array (    0 => 'id',  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\StateController::showAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/show',    ),    1 =>     array (      0 => 'variable',      1 => '/',      2 => '[^/]++',      3 => 'id',    ),    2 =>     array (      0 => 'text',      1 => '/user/calendar/state',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'state_new' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\StateController::newAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/user/calendar/state/new',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'state_create' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\StateController::createAction',  ),  2 =>   array (    '_method' => 'post',  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/user/calendar/state/create',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'state_edit' => array (  0 =>   array (    0 => 'id',  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\StateController::editAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/edit',    ),    1 =>     array (      0 => 'variable',      1 => '/',      2 => '[^/]++',      3 => 'id',    ),    2 =>     array (      0 => 'text',      1 => '/user/calendar/state',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'state_update' => array (  0 =>   array (    0 => 'id',  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\StateController::updateAction',  ),  2 =>   array (    '_method' => 'post',  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/update',    ),    1 =>     array (      0 => 'variable',      1 => '/',      2 => '[^/]++',      3 => 'id',    ),    2 =>     array (      0 => 'text',      1 => '/user/calendar/state',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'state_delete' => array (  0 =>   array (    0 => 'id',  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\StateController::deleteAction',  ),  2 =>   array (    '_method' => 'post',  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/delete',    ),    1 =>     array (      0 => 'variable',      1 => '/',      2 => '[^/]++',      3 => 'id',    ),    2 =>     array (      0 => 'text',      1 => '/user/calendar/state',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'item' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\ItemController::indexAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/user/calendar/item/',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'item_show' => array (  0 =>   array (    0 => 'id',  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\ItemController::showAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/show',    ),    1 =>     array (      0 => 'variable',      1 => '/',      2 => '[^/]++',      3 => 'id',    ),    2 =>     array (      0 => 'text',      1 => '/user/calendar/item',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'item_new' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\ItemController::newAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/user/calendar/item/new',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'item_create' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\ItemController::createAction',  ),  2 =>   array (    '_method' => 'post',  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/user/calendar/item/create',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'item_edit' => array (  0 =>   array (    0 => 'id',  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\ItemController::editAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/edit',    ),    1 =>     array (      0 => 'variable',      1 => '/',      2 => '[^/]++',      3 => 'id',    ),    2 =>     array (      0 => 'text',      1 => '/user/calendar/item',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'item_update' => array (  0 =>   array (    0 => 'id',  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\ItemController::updateAction',  ),  2 =>   array (    '_method' => 'post',  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/update',    ),    1 =>     array (      0 => 'variable',      1 => '/',      2 => '[^/]++',      3 => 'id',    ),    2 =>     array (      0 => 'text',      1 => '/user/calendar/item',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'item_delete' => array (  0 =>   array (    0 => 'id',  ),  1 =>   array (    '_controller' => 'Countrynside\\CalendarBundle\\Controller\\ItemController::deleteAction',  ),  2 =>   array (    '_method' => 'post',  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/delete',    ),    1 =>     array (      0 => 'variable',      1 => '/',      2 => '[^/]++',      3 => 'id',    ),    2 =>     array (      0 => 'text',      1 => '/user/calendar/item',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+    );
+
+    /**
+     * Constructor.
+     */
+    public function __construct(RequestContext $context, LoggerInterface $logger = null)
+    {
+        $this->context = $context;
+        $this->logger = $logger;
+    }
+
+    public function generate($name, $parameters = array(), $referenceType = self::ABSOLUTE_PATH)
+    {
+        if (!isset(self::$declaredRoutes[$name])) {
+            throw new RouteNotFoundException(sprintf('Unable to generate a URL for the named route "%s" as such route does not exist.', $name));
+        }
+
+        list($variables, $defaults, $requirements, $tokens, $hostTokens, $requiredSchemes) = self::$declaredRoutes[$name];
+
+        return $this->doGenerate($variables, $defaults, $requirements, $tokens, $parameters, $name, $referenceType, $hostTokens, $requiredSchemes);
+    }
+}

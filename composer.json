@@ -19,7 +19,11 @@
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "@dev",
-        "doctrine/doctrine-fixtures-bundle": "2.2.x-dev"
+        "doctrine/doctrine-fixtures-bundle": "2.2.x-dev",
+        "payum/payum-bundle" : "0.14.*@dev",
+        "payum/core" : "0.14.*@dev",
+        "payum/paypal-express-checkout-nvp": "0.14.*@dev",
+        "jms/payment-core-bundle" : "1.0.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

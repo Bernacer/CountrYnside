@@ -1,0 +1,10 @@
+{% extends '::base.html.twig'%}
+{% block body %}
+{{ parent()}}
+<div class="container">
+
+    <h2> Félicitations </h2>
+    <p> Vous disposés maintenant d'un compte prémium valable jusqu'au : {{user.dateExpiration|date('d/m/y')}} </p>
+</div>
+
+{% endblock body %}

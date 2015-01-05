@@ -21,8 +21,11 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Countrynside\UserBundle\CountrynsideUserBundle(),
             new Countrynside\CalendarBundle\CountrynsideCalendarBundle(),
+            new Countrynside\PaymentBundle\CountrynsidePaymentBundle(),
+            new Payum\Bundle\PayumBundle\PayumBundle(),
+            new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
         );
-
+        
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();

@@ -21,3 +21,7 @@ countrynside_site_chercherEvent:
 countrynside_site_infosEventComplet:
     path: /information_evennement
     defaults: { _controller: CountrynsideSiteBundle:Default:infosEventComplet }
+    
+countrynside_site_abonnement:
+    path: /abonnement
+    defaults: { _controller: CountrynsideSiteBundle:Default:abonnement }

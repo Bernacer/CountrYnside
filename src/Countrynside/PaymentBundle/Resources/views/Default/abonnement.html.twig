@@ -1,0 +1,23 @@
+{% extends '::base.html.twig'%}
+{% block body %}
+{{ parent()}}
+<div class="container">
+    
+    {% if user.premium %}
+        <h1> Votre abonnement expirera le {{user.dateExpiration|date('d/m/y')}} </h1>
+    {% endif %}
+        
+    <h3> Choisissez votre formule d'abonnement</h3>
+    <form class="col-md-3" method="POST" action="{{path("countrynside_payment_abonnement_prepare")}}">
+        <div class="form-group">
+            <select class="form-control" name="abonnement">
+            {% for offre in offres %}
+                <option value="{{offre.prix}}" > {{offre.description}} - {{offre.prix|number_format(2,',',',')}}€ </option>
+            {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit"> Valider </button>
+    </form>
+</div>
+
+{% endblock body %}

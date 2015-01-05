@@ -60,9 +60,27 @@ doctrine:
         #     path:     "%database_path%"
 
     orm:
-        auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
+        auto_generate_proxy_classes: %kernel.debug%
+        #auto_mapping: true
+        entity_managers:
+            default:
+                mappings:
+                    FOSUserBundle: ~
+                    CountrynsideUserBundle: ~
+                    CountrynsideSiteBundle: ~
+                    CountrynsidePaymentBundle: ~
+                    CountrynsideCalendarBundle: ~
+                    payum:
+                        is_bundle: false
+                        type: xml
+                        dir: %kernel.root_dir%/../vendor/payum/core/Payum/Core/Bridge/Doctrine/Resources/mapping
 
+                        # set this dir instead if you use `payum/payum` library
+                        #dir: %kernel.root_dir%/../vendor/payum/payum/src/Payum/Core/Bridge/Doctrine/Resources/mapping
+
+                        prefix: Payum\Core\Model
+                        
+                         
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -86,3 +104,27 @@ fos_user:
             enabled: true
     service:
             mailer: fos_user.mailer.twig_swift
+            
+twig:
+    paths:
+        %kernel.root_dir%/../vendor/payum/payum/src/Payum/Core/Resources/views: PayumCore
+        %kernel.root_dir%/../vendor/payum/payum/src/Payum/Core/Bridge/Symfony/Resources/views: PayumSymfonyBridge
+        
+payum:
+    security:
+        token_storage:
+            Countrynside\PaymentBundle\Entity\PaymentToken: { doctrine: orm }
+
+    storages:
+        Countrynside\PaymentBundle\Entity\Order: { doctrine: orm }
+
+    contexts:
+        myPayment:
+            paypal_express_checkout_nvp:
+                username:  'philippe.paulos-facilitator_api1.hotmail.fr'
+                password:  'V4EKLDFKZFCR8HS7'
+                signature: 'AFcWxV21C7fd0v3bYYYRCpSSRl31AFBqutY937koYKVRtgsubJfGNq4m'
+                sandbox: true
+                
+jms_payment_core:
+    secret: asecret

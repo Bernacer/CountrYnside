@@ -2,6 +2,11 @@
 {% block body %}
 {{ parent()}}
 <div class="container">
-    {{event.descriptif}}
+    {% if user.premium %}
+        {{event.descriptif}}
+    {% else %}
+    <p> L'accès à ces informations est restreint, vous devez vous procurer un compte premium <p>
+    <p> <a href="{{path("blog_home")}}"> </a> Devenir premium </p>
+    {% endif %}
 </div>
 {% endblock body %}

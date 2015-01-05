@@ -1,0 +1,7 @@
+countrynside_payment_abonnement_prepare:
+    path: /abonnement/prepare
+    defaults: { _controller: CountrynsidePaymentBundle:Payment:prepare }
+    
+countrynside_payment_done:
+    path: /abonnement/done
+    defaults: { _controller: CountrynsidePaymentBundle:Payment:done }
