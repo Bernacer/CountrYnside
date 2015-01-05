@@ -46,14 +46,14 @@ class Util {
 
     public static function getCapacite() {
         $cap = array(
-            "1 personne",
-            "2 personnes",
-            "3 personnes",
-            "4 personnes",
-            "5 personnes",
-            "+10 personnes",
-            "+50 personnes",
-            "+100 personnes",
+            1 => "1 personne",
+            2 => "2 personnes",
+            3 => "3 personnes",
+            4 => "4 personnes",
+            5 => "5 personnes",
+            10 => "+10 personnes",
+            50 => "+50 personnes",
+            100 => "+100 personnes",
         );
         return $cap;
     }
