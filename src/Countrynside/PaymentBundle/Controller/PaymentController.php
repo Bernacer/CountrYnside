@@ -47,7 +47,8 @@ class PaymentController extends Controller {
         $offre = $order->getOffre();
         $duree = $offre->getDuree();
         if ($user->isPremium()) {
-            $user->getDateExpiration()->modify('+' . $duree . ' month');
+            $date = \DateTime::createFromFormat('Y/m/d', $user->getDateExpiration()->format('Y/m/d'));
+            $user->setDateExpiration($date->modify('+' . $duree . ' month'));
         } else {
             $user->setPremium(true);
             $date = new \DateTime();
