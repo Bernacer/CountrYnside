@@ -3,6 +3,7 @@
 namespace Countrynside\PaymentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Table
@@ -38,7 +39,7 @@ class Offre
     protected $duree;
 
     /**
-     * @ORM\OneToMany(targetEntity="Countrynside\UserBundle\Entity\User",mappedBy="offre")
+     * @ORM\OneToMany(targetEntity="Countrynside\PaymentBundle\Entity\Order",mappedBy="offre")
      */
     protected $orders;
     

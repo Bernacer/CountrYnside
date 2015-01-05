@@ -14,11 +14,7 @@ class DefaultController extends Controller {
     public function indexAction() {
         return $this->render('CountrynsideSiteBundle:Default:index.html.twig');
     }
-
-    public function indexAction() {
-        return $this->render('CountrynsideSiteBundle:Default:index.html.twig');
-    }
-
+    
     public function connexionAction() {
         return $this->render('CountrynsideSiteBundle:Default:connexion.html.twig');
     }
@@ -66,6 +62,8 @@ class DefaultController extends Controller {
 
     public function chercherEventAction(Request $request) {
         if ($request->getMethod() == "GET") {
+            $user = $this->getUser();
+            $this->testPremium($user);
             $recherche = $request->get("infos_recherche");
             $dateD = $request->get("dateD");
             $dateF = $request->get("dateF");
@@ -76,23 +74,40 @@ class DefaultController extends Controller {
                     ->findByMots($mots);
         }
         $eventsList = $this->get('knp_paginator')->paginate($events, $this->get('request')->query->get('page', 1), 6);
-        return $this->render('CountrynsideSiteBundle:Default:rechercherEvennement.html.twig', array('events' => $eventsList));
+        return $this->render('CountrynsideSiteBundle:Default:rechercherEvennement.html.twig', array('user' => $user, 'events' => $eventsList));
     }
 
-    public function infosEventCompletAction(Request $request) {
+   /* public function infosEventCompletAction(Request $request) {
         $user = $this->getUser();
         $event = null;
-        if ($user->isPremium()) {
-
+        if ($this->testPremium($user)) {
             $id_event = $request->get('event');
             $event = $this->getDoctrine()
                     ->getRepository('CountrynsideSiteBundle:Event')
                     ->find($id_event);
             return $this->render('CountrynsideSiteBundle:Default:infosEvennementComplet.html.twig', array('event' => $event, 'user' => $user));
         }
-        $this->abonnementAction($request);
-    }
+        return $this->redirect($this->generateUrl('countrynside_site_abonnement'));
+    }*/
 
+    public function testPremium(&$user){
+        $test = false;
+        if ($user->isPremium()){
+            $time = new \DateTime("now");
+            if($time > $user->getDateExpiration()){
+                throw new \Exception("test");
+                $user->setPremium(false);
+                $user->setDateExpiration(null);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+            } 
+            else{
+                $test = true;
+            }
+        }
+        return $test;
+    }
     public function abonnementAction(Request $request) {
         $user = $this->getUser();
         $offres = $this->getDoctrine()

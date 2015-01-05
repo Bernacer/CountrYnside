@@ -104,6 +104,7 @@ fos_user:
             enabled: true
     service:
             mailer: fos_user.mailer.twig_swift
+
             
 twig:
     paths:

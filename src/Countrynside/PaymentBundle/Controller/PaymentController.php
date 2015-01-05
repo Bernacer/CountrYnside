@@ -49,7 +49,6 @@ class PaymentController extends Controller {
         if ($user->isPremium()) {
             $user->getDateExpiration()->modify('+' . $duree . ' month');
         } else {
-            throw new \Exception("non");
             $user->setPremium(true);
             $date = new \DateTime();
             $date = $date->modify('+' . $duree . ' month');
