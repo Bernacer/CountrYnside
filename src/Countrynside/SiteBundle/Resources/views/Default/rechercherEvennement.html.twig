@@ -39,7 +39,7 @@
                         <div id="card">
                             <div class="col-md-4 col-sm-6 card-item" >
                                 {% if not user.isPremium %}
-                                <a href="{{path('countrynside_site_abonnement', {'event' : event.id} )}} " class="card-link" ></a>
+                                <a href="{{path('countrynside_site_abonnement', {'event' : event.id} )}} " class="card-link" >
                                 {% else %}
                                  <a href="#cardModal{{ event.id }}" class="card-link" data-toggle="modal">
                                 {%endif%}
