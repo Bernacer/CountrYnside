@@ -74,7 +74,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         {% if event.path %}
-                                                            <img src="{{asset(directory~event.user.id~"/photos/"~event.path)}}" alt="{{event.titre}}"  class="img-responsive"/>
+                                                            <img src="{{asset(directory~event.user.id~"/photos/"~event.path)}}" alt="{{event.titre}}"  class="img-responsive element-center"/>
                                                         {% else %}
                                                             <img src="{{asset('bundles/countrynside/images/photo_default.png')}}" class="img-responsive element-center"/>
                                                         {% endif %}
