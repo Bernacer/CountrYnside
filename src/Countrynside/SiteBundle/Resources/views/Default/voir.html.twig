@@ -40,7 +40,11 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <img src="{{asset(directory~id~"/photos/"~event.path)}}" alt="{{event.titre}}" class="image"/>
+                                {% if event.path %}
+                                <img src="{{asset(directory~id~"/photos/"~event.path)}}" alt="{{event.titre}}"  class="image"/>
+                                {% else %}
+                                    <img src="{{asset('bundles/countrynside/images/photo_default.png')}}" class="image"/>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="row">

@@ -34,8 +34,7 @@ class LoadEventData extends AbstractFixture implements FixtureInterface,OrderedF
                     $event->setTarif($tarif);
                     $event->setDescriptif($descriptif);
                     $event->setDatepub($dt);
-                    $event->setPath($path);
-                    $event->setPath($path);
+//                    $event->setPath($path);
                     $event->setCoord($coord);
 
                     $manager->persist($event);
