@@ -114,8 +114,14 @@
                                                     {{event.telephone}}
                                                 </div>
                                                 <div class="text-left">
-                                                    <i class="glyphicon glyphicon-inbox"></i><span class="modal-label"> Capacité :</span>                               
+                                                    <i class="glyphicon glyphicon-inbox"></i><span class="modal-label"> Capacité :</span>
+                                                    {% if event.capacite == 1 %}
                                                         {{event.capacite}} personne
+                                                    {% elseif event.capacite > 1 and event.capacite < 10 %}
+                                                        {{event.capacite}} personnes
+                                                    {% else %}
+                                                        + {{event.capacite}} personnes
+                                                    {% endif %}
                                                 </div>
                                                 <div class="text-left">
                                                     <i class="glyphicon glyphicon-euro"></i><span class="modal-label"> Tarif :</span>
