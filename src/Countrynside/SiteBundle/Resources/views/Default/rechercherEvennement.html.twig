@@ -39,7 +39,7 @@
                         <div id="card">
                             <div class="col-md-4 col-sm-6 card-item" >
                                 {% if not user.isPremium %}
-                                <a href="{{path('countrynside_site_abonnement', {'event' : event.id} )}} " class="card-link" >
+                                <a href="{{path('countrynside_site_abonnement', {'event' : event.id} )}} " class="card-link" ></a>
                                 {% else %}
                                  <a href="#cardModal{{ event.id }}" class="card-link" data-toggle="modal">
                                 {%endif%}
@@ -153,10 +153,57 @@
                     </div>
                 </div>
 
-                </div>
         {% endif %}
         {# display navigation #}
         <div class="row navigation text-center">
             {{ knp_pagination_render(events) }}
         </div>
+    <script type="text/javascript">
+        var map;
+        var myCenter=new google.maps.LatLng(46.6302142, 2.5680160);
+        var marker=new google.maps.Marker({
+            position:myCenter
+        });
+
+        function initialize() {
+            var mapProp = {
+                center:myCenter,
+                draggable: false,
+                scrollwheel: true,
+                mapTypeId:google.maps.MapTypeId.ROADMAP,
+                zoom: 6,
+                disableDefaultUI: true
+            };
+
+            map=new google.maps.Map(document.getElementById("map-canvas"),mapProp);
+            marker.setMap(map);
+
+            google.maps.event.addListener(marker, 'click', function() {
+
+                infowindow.setContent(contentString);
+                infowindow.open(map, marker);
+
+            });
+        };
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+        google.maps.event.addDomListener(window, "resize", resizingMap());
+
+        $('#mapModal').on('show.bs.modal', function() {
+            //Must wait until the render of the modal appear, thats why we use the resizeMap and NOT resizingMap!! ;-)
+            resizeMap();
+        })
+
+        function resizeMap() {
+            if(typeof map =="undefined") return;
+            setTimeout( function(){resizingMap();} , 400);
+        }
+
+        function resizingMap() {
+            if(typeof map =="undefined") return;
+            var center = map.getCenter();
+            google.maps.event.trigger(map, "resize");
+            map.setCenter(center);
+        }
+    </script>
 {% endblock body %}
