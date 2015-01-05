@@ -2,11 +2,13 @@
 
 namespace Countrynside\SiteBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Countrynside\SiteBundle\Entity\Event;
 
-class LoadEventData implements FixtureInterface  {
+class LoadEventData extends AbstractFixture implements FixtureInterface,OrderedFixtureInterface  {
 
     public function load(ObjectManager $manager) {
 
@@ -15,13 +17,14 @@ class LoadEventData implements FixtureInterface  {
         {
             echo('Lecture du fichier');
             $handle = fopen ($fichier,"r" );
-
+            $user = $this->getReference('fifi');
             while ($lignes=fgets($handle))
             {
                 list($titre,$type,$capacite,$region, $adresse,$telephone,$tarif,$descriptif,$path,$coord)=explode(";", $lignes);
 
                     $event = new Event();
                     $dt = new \DateTime();
+                    $event->setUser($user);
                     $event->setTitre($titre);
                     $event->setType($type);
                     $event->setCapacite($capacite);
@@ -31,8 +34,7 @@ class LoadEventData implements FixtureInterface  {
                     $event->setTarif($tarif);
                     $event->setDescriptif($descriptif);
                     $event->setDatepub($dt);
-                    $event->setPath($path);
-                    $event->setPath($path);
+//                    $event->setPath($path);
                     $event->setCoord($coord);
 
                     $manager->persist($event);
@@ -40,13 +42,16 @@ class LoadEventData implements FixtureInterface  {
 
             fclose($handle);
 
-            // On déclenche l'enregistrement
-            $manager->flush(); // à decommenter pour l'insertion en bdd
+            $manager->flush();
         }
         else
         { echo('le fichier existe pas ');}
         // retour 0 si tout c'est bien execute
         return 0;
+    }
+
+    public function getOrder(){
+        return 2;
     }
 
 }

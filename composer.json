@@ -23,7 +23,8 @@
         "payum/payum-bundle" : "0.14.*@dev",
         "payum/core" : "0.14.*@dev",
         "payum/paypal-express-checkout-nvp": "0.14.*@dev",
-        "jms/payment-core-bundle" : "1.0.*"
+        "jms/payment-core-bundle" : "1.0.*",
+        "knplabs/knp-paginator-bundle": "~2.4"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

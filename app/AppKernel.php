@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Countrynside\PaymentBundle\CountrynsidePaymentBundle(),
             new Payum\Bundle\PayumBundle\PayumBundle(),
             new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         );
         
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

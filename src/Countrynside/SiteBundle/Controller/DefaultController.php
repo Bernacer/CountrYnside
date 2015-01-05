@@ -10,11 +10,15 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class DefaultController extends Controller {
-    
+
     public function indexAction() {
         return $this->render('CountrynsideSiteBundle:Default:index.html.twig');
     }
-    
+
+    public function indexAction() {
+        return $this->render('CountrynsideSiteBundle:Default:index.html.twig');
+    }
+
     public function connexionAction() {
         return $this->render('CountrynsideSiteBundle:Default:connexion.html.twig');
     }
@@ -71,13 +75,15 @@ class DefaultController extends Controller {
                     ->getRepository('CountrynsideSiteBundle:Event')
                     ->findByMots($mots);
         }
-        return $this->render('CountrynsideSiteBundle:Default:rechercherEvennement.html.twig', array('events' => $events));
+        $eventsList = $this->get('knp_paginator')->paginate($events, $this->get('request')->query->get('page', 1), 6);
+        return $this->render('CountrynsideSiteBundle:Default:rechercherEvennement.html.twig', array('events' => $eventsList));
     }
 
     public function infosEventCompletAction(Request $request) {
         $user = $this->getUser();
         $event = null;
         if ($user->isPremium()) {
+
             $id_event = $request->get('event');
             $event = $this->getDoctrine()
                     ->getRepository('CountrynsideSiteBundle:Event')
@@ -86,13 +92,13 @@ class DefaultController extends Controller {
         }
         $this->abonnementAction($request);
     }
-    
-    public function abonnementAction(Request $request){
-        $user=$this->getUser();
+
+    public function abonnementAction(Request $request) {
+        $user = $this->getUser();
         $offres = $this->getDoctrine()
                 ->getRepository('CountrynsidePaymentBundle:Offre')
                 ->findAll();
         return $this->render('CountrynsidePaymentBundle:Default:abonnement.html.twig', array('offres' => $offres, 'user' => $user));
     }
+
 }
-    
