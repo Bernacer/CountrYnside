@@ -1,7 +1,19 @@
 {% extends '::base.html.twig'%}
+{% block stylesheets %}
+    {{parent()}}
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="{{ asset('css/sitebundle/css/eventform.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('css/sitebundle/css/font-awesome-4.1.0/css/font-awesome.min.css') }}" type="text/css" />
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="http://maps.google.com/maps/api/js?v=3.exp"></script>
+    <script type="text/javascript" src="{{ asset('css/sitebundle/js/eventmap.js') }}"></script>
+{% endblock %}
 {% block body %}
     {{parent()}}
-    <div class="container">
+    {% set directory= "users/documents/" %}
+    <div class="row text-center" style="margin-bottom: 50px;">
         <div class="search-pannel">
             <div class="row col-xs-12">
                 <form class="form-inline col-xs-12" role="form" method="GET" action="{{path("countrynside_site_chercherEvent")}}">
@@ -18,29 +30,129 @@
                 </form>
             </div>
         </div>
+    </div>
         {% if events is empty %}
             <p style="margin-top: 75px"> Aucun évennement trouvé </p>
         {% else %}
-            {% for event in events %}
-                <div>
-                    <h3>{{event.titre}}</h3>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <time>{{event.datepub|date('d M Y')}}</time>
+                <div class="container main">
+                    {% for event in events %}
+                        <div id="card">
+                            <div class="col-md-4 col-sm-6 card-item" >
+                                <a href="{{path('countrynside_site_infosEventComplet', {'event' : event.id} )}} " class="card-link" >
+                                    <div class="card-hover">
+                                        <div class="card-hover-content">
+                                            <i class="fa fa-plus fa-3x"></i>
+                                        </div>
+                                    </div>
+                                    {% if event.path %}
+                                        <img src="{{asset(directory~event.user.id~"/photos/"~event.path)}}" alt="{{event.titre}}"  class="image-card img-responsive"/>
+                                    {% else %}
+                                        <img src="{{asset('bundles/countrynside/images/photo_default.png')}}" class="image-card img-responsive"/>
+                                    {% endif %}
+                                </a>
+                                <div class="card-caption">
+                                    <h4 class="card-title">{{event.titre}}</h4><br/>
+                                    <p class="text-muted">{{event.descriptif}}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row"> 
-                        <div class="col-md-6">
-                            <h6>{{event.region}}</h6>
+
+                        <!-- card Modal -->
+                        <div class="card-modal modal fade" id="cardModal{{ event.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-content">
+                                <div class="close-modal" data-dismiss="modal">
+                                    <div class="lr">
+                                        <div class="rl">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="container">
+                                            <div class="modal-body">
+                                                <h4 class="card-title">{{event.titre}}</h4>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        {% if event.path %}
+                                                            <img src="{{asset(directory~event.user.id~"/photos/"~event.path)}}" alt="{{event.titre}}"  class="img-responsive"/>
+                                                        {% else %}
+                                                            <img src="{{asset('bundles/countrynside/images/photo_default.png')}}" class="img-responsive element-center"/>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <p style="text-align: justify">
+                                                        {{ event.descriptif }}
+                                                    </p>
+                                                </div>
+
+                                                <div class="text-left">
+                                                    <i class="glyphicon glyphicon-calendar"></i><span class="modal-label"> Date de publication :</span>
+                                                    <time>{{event.datepub|date('d M Y')}}</time>
+                                                </div>
+                                                <div class="text-left">
+                                                    <i class="glyphicon glyphicon-globe"></i><span class="modal-label"> Région :</span>
+                                                    {{event.region}}
+                                                </div>
+                                                <div class="text-left">
+                                                    <i class="glyphicon glyphicon-map-marker"></i><span class="modal-label"> Adresse :</span>
+                                                    {{event.adresse}}
+                                                </div>
+                                                <div class="text-left">
+                                                    <i class="glyphicon glyphicon-phone"></i><span class="modal-label"> Téléphone :</span>
+                                                    {{event.telephone}}
+                                                </div>
+                                                <div class="text-left">
+                                                    <i class="glyphicon glyphicon-inbox"></i><span class="modal-label"> Capacité :</span>
+                                                    {{event.capacite}}
+                                                </div>
+                                                <div class="text-left">
+                                                    <i class="glyphicon glyphicon-euro"></i><span class="modal-label"> Tarif :</span>
+                                                    {{event.tarif}}
+                                                </div>
+                                                <div class="text-left">
+                                                    <i class="glyphicon glyphicon-edit"></i><span class="modal-label"> <a href="{{ path('countrynside_calendar_admin', { 'event': event.id })}}">Gérer les disponibilités</a></span>
+                                                </div>
+
+                                                <a href="#mapModal" data-toggle="modal"><input type="button" class="btn btn-primary"  value="Voir l'emplacement sur la carte"></a>
+                                                <div class="col-xs-12" style="margin-top: 50px">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Fermer </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <p> <a href="{{path('countrynside_site_infosEventComplet', {'event' : event.id} )}}"> En savoir plus </a> </p>
+
+                    {% endfor %}
                 </div>
-            {% endfor %}
+
+                <div class="card-modal modal fade" id="mapModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-content">
+                        <div class="close-modal" data-dismiss="modal">
+                            <div class="lr">
+                                <div class="rl">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="container">
+                                    <div class="modal-body">
+                                        <div id="map-canvas" style="width: 100%; height: 500px; padding: 0; margin: 0" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
         {% endif %}
         {# display navigation #}
-        <div class="navigation">
+        <div class="row navigation text-center">
             {{ knp_pagination_render(events) }}
         </div>
-    </div>
 {% endblock body %}

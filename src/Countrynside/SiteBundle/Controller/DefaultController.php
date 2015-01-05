@@ -69,7 +69,7 @@ class DefaultController extends Controller {
                     ->getRepository('CountrynsideSiteBundle:Event')
                     ->findByMots($mots);
         }
-        $eventsList = $this->get('knp_paginator')->paginate($events, $this->get('request')->query->get('page', 1), 4);
+        $eventsList = $this->get('knp_paginator')->paginate($events, $this->get('request')->query->get('page', 1), 6);
         return $this->render('CountrynsideSiteBundle:Default:rechercherEvennement.html.twig', array('events' => $eventsList));
     }
 
