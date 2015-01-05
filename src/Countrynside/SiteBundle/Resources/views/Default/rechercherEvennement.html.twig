@@ -46,9 +46,9 @@
                         <div id="card">
                             <div class="col-md-4 col-sm-6 card-item" >
                                 {% if not user.isPremium %}
-                                <a href="{{path('countrynside_site_abonnement', {'event' : event.id} )}} " class="card-link" />
+                                <a href="{{path('countrynside_site_abonnement', {'event' : event.id} )}} " class="card-link" >
                                 {% else %}
-                                <a href="#cardModal{{ event.id }}" class="card-link" data-toggle="modal"/>
+                                <a href="#cardModal{{ event.id }}" class="card-link" data-toggle="modal">
                                 {%endif%}
                                     <div class="card-hover">
                                         <div class="card-hover-content">
@@ -60,6 +60,7 @@
                                     {% else %}
                                         <img src="{{asset('bundles/countrynside/images/photo_default.png')}}" class="image-card img-responsive"/>
                                     {% endif %}
+                                   </a>
                                 <div class="card-caption">
                                     <h4 class="card-title">{{event.titre}}</h4><br/>
                                     <p class="text-muted">{{event.descriptif}}</p>
