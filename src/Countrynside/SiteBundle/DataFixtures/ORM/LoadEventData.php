@@ -7,6 +7,7 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Countrynside\SiteBundle\Entity\Event;
+use Countrynside\CalendarBundle\Entity\Item;
 
 class LoadEventData extends AbstractFixture implements FixtureInterface,OrderedFixtureInterface  {
 
@@ -17,7 +18,7 @@ class LoadEventData extends AbstractFixture implements FixtureInterface,OrderedF
         {
             echo('Lecture du fichier');
             $handle = fopen ($fichier,"r" );
-            $user = $this->getReference('fifi');
+            $user = $this->getReference('Admin');
             while ($lignes=fgets($handle))
             {
                 list($titre,$type,$capacite,$region, $adresse,$telephone,$tarif,$descriptif,$path,$coord)=explode(";", $lignes);
@@ -38,6 +39,13 @@ class LoadEventData extends AbstractFixture implements FixtureInterface,OrderedF
                     $event->setCoord($coord);
 
                     $manager->persist($event);
+
+                $item = new Item();
+                $item->setIdEvent($event);
+                $item->setName($event->getTitre());
+                $item->setPosition(0);
+
+                $manager->persist($item);
             }
 
             fclose($handle);

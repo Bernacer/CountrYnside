@@ -16,7 +16,7 @@ class LoadUserData extends AbstractFixture implements FixtureInterface, Containe
     public function load(ObjectManager $manager) {
         $userManager = $this->container->get('fos_user.user_manager');
         $user=$userManager->createUser();
-        $user->setUserName("fifi")
+        $user->setUserName("Admin")
                 ->setEmail("philippe.paulos@gmail.com")
                 ->setNom("Paulos")
                 ->setPrenom("Philippe");
@@ -30,7 +30,7 @@ class LoadUserData extends AbstractFixture implements FixtureInterface, Containe
 
         $manager->flush();
 
-        $this->addReference('fifi',$user);
+        $this->addReference('Admin',$user);
     }
 
     public function setContainer(\Symfony\Component\DependencyInjection\ContainerInterface $container = null) {

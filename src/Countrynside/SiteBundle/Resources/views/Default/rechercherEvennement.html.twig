@@ -130,7 +130,9 @@
                                                 <div class="text-left">
                                                     <i class="glyphicon glyphicon-edit"></i><span class="modal-label"> <a href="{{ path('countrynside_calendar_admin', { 'event': event.id })}}">Gérer les disponibilités</a></span>
                                                 </div>
-
+                                                <div class="text-left">
+                                                    <i class="glyphicon glyphicon-info-sign"></i> <span class="modal-label"> <a href="{{ path('countrynside_calendar_homepage', { 'event': event.id })}}" target="_blank">Voir les disponibilités</a></span>
+                                                </div>
                                                 <a href="#mapModal" data-toggle="modal"><input type="button" class="btn btn-primary"  value="Voir l'emplacement sur la carte"></a>
                                                 <div class="col-xs-12" style="margin-top: 50px">
                                                     <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Fermer </button>
